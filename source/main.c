@@ -1154,6 +1154,14 @@ void dump_game(int disc_type, int type, int fs) {
 		wmsg->ret_box = blockq;
 
 		ret = DVD_LowRead64(wmsg->data, wmsg->length, (u64)startLBA << 11);
+		// If we fail to read a sector, fill it up with 0xFF's
+		if (!ret)
+		{
+			for (int i = 0;i < wmsg->length; i++)
+				((char*)wmsg->data)[i] = 0xFF;
+			ret = 1;		
+		}
+
 		MQ_Send(msgq, (mqmsg_t)wmsg, MQ_MSG_BLOCK);
 		if(calcChecksums) {
 			// Calculate MD5

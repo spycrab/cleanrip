@@ -234,8 +234,8 @@ void _DrawBackdrop() {
 	WriteFont(510, 40, "GameCube");
 #endif
 
-	sprintf(iosStr, "v%i.%i.%i by emu_kidid", V_MAJOR,V_MID,V_MINOR);
-	WriteFont(225, 40, iosStr);
+	sprintf(iosStr, "v%i.%i.%i-%s by emu_kidid", V_MAJOR,V_MID,V_MINOR, V_BRANCH);
+	WriteCentre(80, iosStr);
 	if (verify_in_use) {
 		if(verify_disc_type == IS_NGC_DISC) {
 			WriteCentre(440, "Gamecube Redump.org DAT in use");

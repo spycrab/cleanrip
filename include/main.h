@@ -55,6 +55,7 @@
 #define V_MAJOR			2
 #define V_MID			0
 #define V_MINOR			0
+#define V_BRANCH	  	"datel"
 
 /*** 2D Video Globals ***/
 extern GXRModeObj *vmode;	/*** Graphics Mode Object ***/
