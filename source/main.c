@@ -1154,11 +1154,11 @@ void dump_game(int disc_type, int type, int fs) {
 		wmsg->ret_box = blockq;
 
 		ret = DVD_LowRead64(wmsg->data, wmsg->length, (u64)startLBA << 11);
-		// If we fail to read a sector, fill it up with 0xFF's
+		// If we fail to read a sector, fill it up with 55h (as required by redump)
 		if (!ret)
 		{
 			for (int i = 0;i < wmsg->length; i++)
-				((char*)wmsg->data)[i] = 0xFF;
+				((char*)wmsg->data)[i] = 0x55;
 			ret = 1;		
 		}
 
